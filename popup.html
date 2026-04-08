@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>⚡ Productivity Hub</h1>
+            <button id="themeToggle" class="theme-btn" title="Toggle Dark Mode">🌙</button>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="timer">⏱️ Timer</button>
+            <button class="tab-btn" data-tab="notes">📝 Notes</button>
+            <button class="tab-btn" data-tab="todos">✓ Todos</button>
+            <button class="tab-btn" data-tab="tools">🎨 Tools</button>
+        </div>
+
+        <!-- Timer Tab -->
+        <div id="timer" class="tab-content active">
+            <div class="timer-display">
+                <div class="time" id="timerDisplay">00:00</div>
+                <div class="status" id="timerStatus">Ready</div>
+            </div>
+            <div class="timer-inputs">
+                <input type="number" id="minutes" min="0" max="60" placeholder="Minutes" value="25">
+                <span>:</span>
+                <input type="number" id="seconds" min="0" max="59" placeholder="Seconds" value="0">
+            </div>
+            <div class="timer-controls">
+                <button class="btn btn-primary" id="startBtn">Start</button>
+                <button class="btn btn-secondary" id="pauseBtn" disabled>Pause</button>
+                <button class="btn btn-warning" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <!-- Notes Tab -->
+        <div id="notes" class="tab-content">
+            <textarea id="noteInput" placeholder="Write your thoughts here..." class="note-textarea"></textarea>
+            <button class="btn btn-primary" id="saveNoteBtn">Save Note</button>
+            <div id="notesList" class="notes-list"></div>
+        </div>
+
+        <!-- Todos Tab -->
+        <div id="todos" class="tab-content">
+            <div class="todo-input-group">
+                <input type="text" id="todoInput" placeholder="Add a new todo..." class="todo-input">
+                <button class="btn btn-primary" id="addTodoBtn">Add</button>
+            </div>
+            <ul id="todosList" class="todos-list"></ul>
+        </div>
+
+        <!-- Tools Tab -->
+        <div id="tools" class="tab-content">
+            <div class="tool-section">
+                <h3>🎨 Color Picker</h3>
+                <div class="color-picker">
+                    <input type="color" id="colorInput" value="#6366f1">
+                    <div id="colorDisplay" class="color-display"></div>
+                </div>
+                <p id="colorValue" class="color-value">#6366f1</p>
+            </div>
+
+            <div class="tool-section">
+                <h3>📊 Quick Stats</h3>
+                <div id="stats" class="stats">
+                    <div class="stat">
+                        <span>Total Todos</span>
+                        <strong id="totalTodos">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Completed</span>
+                        <strong id="completedTodos">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Focus Time</span>
+                        <strong id="focusTime">0h</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <small>Built with ❤️ by Codyasbin</small>
+            <button id="clearAllBtn" class="btn btn-danger compact">Clear All Data</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
