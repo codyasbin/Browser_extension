@@ -129,6 +129,11 @@ const Timer = {
 const Notes = {
     init() {
         document.getElementById('saveNoteBtn').addEventListener('click', () => this.saveNote());
+        document.getElementById('notesList').addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-note-btn')) {
+                this.deleteNote(parseInt(e.target.dataset.id));
+            }
+        });
         this.loadNotes();
     },
 
@@ -159,7 +164,7 @@ const Notes = {
                 noteEl.innerHTML = `
                     <p>${this.escapeHtml(note.text)}</p>
                     <small>${note.date}</small>
-                    <button class="btn btn-danger compact" onclick="Notes.deleteNote(${note.id})">Delete</button>
+                    <button class="btn btn-danger compact delete-note-btn" data-id="${note.id}">Delete</button>
                 `;
                 list.appendChild(noteEl);
             });
