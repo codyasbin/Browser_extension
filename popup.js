@@ -193,6 +193,16 @@ const Todos = {
         document.getElementById('todoInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.addTodo();
         });
+        document.getElementById('todosList').addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox') {
+                this.toggleTodo(parseInt(e.target.dataset.id));
+            }
+        });
+        document.getElementById('todosList').addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-todo-btn')) {
+                this.deleteTodo(parseInt(e.target.dataset.id));
+            }
+        });
         this.loadTodos();
     },
 
@@ -222,10 +232,9 @@ const Todos = {
                 const li = document.createElement('li');
                 li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
                 li.innerHTML = `
-                    <input type="checkbox" ${todo.completed ? 'checked' : ''} 
-                        onchange="Todos.toggleTodo(${todo.id})">
+                    <input type="checkbox" data-id="${todo.id}" ${todo.completed ? 'checked' : ''}>
                     <span>${this.escapeHtml(todo.text)}</span>
-                    <button class="btn btn-danger compact" onclick="Todos.deleteTodo(${todo.id})">×</button>
+                    <button class="btn btn-danger compact delete-todo-btn" data-id="${todo.id}">×</button>
                 `;
                 list.appendChild(li);
             });
